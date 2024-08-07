@@ -17,6 +17,16 @@ InvetoryBR es una aplicación de gestión de inventario diseñada específicamen
 
 ## 🖼️ Capturas de Pantalla
 
+# Inicio de Sesion
+![image](https://github.com/user-attachments/assets/db18f845-036c-4b90-ae5c-724f7c04b439)
+
+
+
+# Registro de usuario
+![image](https://github.com/user-attachments/assets/3bea5766-ba20-4258-b6bb-cccfde38bb8e)
+
+
+
 # Inventario
 
 ![image](https://github.com/user-attachments/assets/a674a031-01ca-4d26-b1bf-2dbb6d10ed82)
