@@ -23,4 +23,23 @@ sealed class Screen() {
 
     @Serializable
     object Dashboard : Screen()
+
+    @Serializable
+    object InventarioList : Screen()
+
+    @Serializable
+    object InventarioStockBajoList : Screen()
+
+    @Serializable
+    object InventarioFechaExpList : Screen()
+
+    @Serializable
+    object PerfilScreen : Screen()
+
+    @Serializable
+    object LoginScreen : Screen()
+
+    @Serializable
+    object RegistroScreen : Screen()
+
 }

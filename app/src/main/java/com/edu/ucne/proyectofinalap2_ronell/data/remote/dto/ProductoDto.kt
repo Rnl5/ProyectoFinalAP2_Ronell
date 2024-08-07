@@ -6,9 +6,9 @@ data class ProductoDto(
     val descripcionProducto: String,
     val fechaVencProducto: String,
     val stockProducto: Int,
-//    val marcaProducto: String,
-//    val categoriaId: Int,
-//    val precioCompraProducto: Double,
-//    val precioVentaProducto: Double,
-//    val codigoBarrasProducto: String
+    val categoriaId: Int,
+    val marcaId: Int,
+    val precioCompraProducto: Double,
+    val precioVentaProducto: Double,
+    val codigoBarrasProducto: String
 )

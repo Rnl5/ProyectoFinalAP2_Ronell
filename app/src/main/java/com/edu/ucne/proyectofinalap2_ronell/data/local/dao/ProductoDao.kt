@@ -33,4 +33,10 @@ interface ProductoDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(productos: List<ProductoEntity>)
+
+    @Query("SELECT * FROM Productos WHERE codigoBarrasProducto = :codigoBarras LIMIT 1")
+    suspend fun findByCodigoBarras(codigoBarras: String): ProductoEntity?
+
+    @Query("SELECT * FROM Productos")
+    suspend fun getAllSync(): List<ProductoEntity>
 }

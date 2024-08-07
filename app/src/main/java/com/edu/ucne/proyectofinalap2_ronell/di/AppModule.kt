@@ -45,6 +45,10 @@ object AppModule {
 
     @Provides
     @Singleton
+    fun providesUsuarioDao(productodb:ProductoDb) = productodb.usuarioDao()
+
+    @Provides
+    @Singleton
     fun providesMoshi(): Moshi =
         Moshi.Builder()
             .add(KotlinJsonAdapterFactory())

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "934179094272",
+    "project_id": "inventorybrsign",
+    "storage_bucket": "inventorybrsign.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:934179094272:android:d0546c4d59cb2920637de5",
+        "android_client_info": {
+          "package_name": "com.edu.ucne.proyectofinalap2_ronell"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzBHh4I3ABG-xBMfIpD0P41SOSfzluKdg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
