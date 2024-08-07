@@ -1,6 +1,7 @@
-# 🛒 InvetoryBR: Sistema de Inventario
+# 🛒 InventoryBR: Sistema de Inventario
 
-<!-- Inserta aquí una imagen atractiva del dashboard o logo de la aplicación -->
+![image](https://github.com/user-attachments/assets/ce446277-eb32-482c-8715-2ea6931a925c)
+
 
 InvetoryBR es una aplicación de gestión de inventario diseñada específicamente para productos alimenticioS. Con una interfaz intuitiva y funciones potentes, InvetoryBR simplifica el seguimiento y control de tu inventario.
 
@@ -16,8 +17,31 @@ InvetoryBR es una aplicación de gestión de inventario diseñada específicamen
 
 ## 🖼️ Capturas de Pantalla
 
-<!-- Inserta aquí un conjunto de capturas de pantalla de las principales funciones -->
+# Inventario
 
+![image](https://github.com/user-attachments/assets/a674a031-01ca-4d26-b1bf-2dbb6d10ed82)
+
+
+# Opciones de perfil
+
+![image](https://github.com/user-attachments/assets/4d5ac787-e02a-45b8-9767-e63250e9697b)
+
+
+
+# Inventario con solo los productos con Stock bajo
+![image](https://github.com/user-attachments/assets/23f2ca6c-0e34-437e-a213-6f8330f2d314)
+
+
+# Registro de Productos 1
+![image](https://github.com/user-attachments/assets/818f726c-76d6-46e0-8c03-e03a979947fb)
+
+
+# Registro de Productos 2
+![image](https://github.com/user-attachments/assets/a9c50885-1001-4166-b05c-3abf8f6ce7b1)
+
+
+# Registro de Productos 3
+![image](https://github.com/user-attachments/assets/997e5c83-fb39-4584-a7fb-933397c444cf)
 
 
 
