@@ -1,26 +1,46 @@
 package com.edu.ucne.proyectofinalap2_ronell.presentation.navigation
 
 
+import android.content.Context
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
 
 import androidx.navigation.NavHostController
+import androidx.navigation.Navigation
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
+import com.edu.ucne.proyectofinalap2_ronell.presentation.Home.Dashboard
+import com.edu.ucne.proyectofinalap2_ronell.presentation.Inventario.InventarioListScreenProximoVencer
+import com.edu.ucne.proyectofinalap2_ronell.presentation.Inventario.InventarioListScreenStockBajo
+import com.edu.ucne.proyectofinalap2_ronell.presentation.Inventario.InventarioListStockBajoBody
 import com.edu.ucne.proyectofinalap2_ronell.presentation.categoria.CategoriaListScreen
 import com.edu.ucne.proyectofinalap2_ronell.presentation.categoria.CategoriaScreen
+import com.edu.ucne.proyectofinalap2_ronell.presentation.login.AuthViewModel
+//import com.edu.ucne.proyectofinalap2_ronell.presentation.login.AuthManager
+import com.edu.ucne.proyectofinalap2_ronell.presentation.login.LoginScreen
+//import com.edu.ucne.proyectofinalap2_ronell.presentation.login.ProfileScreen
+import com.edu.ucne.proyectofinalap2_ronell.presentation.login.SignUpScreen
 import com.edu.ucne.proyectofinalap2_ronell.presentation.marca.MarcaListScreen
 import com.edu.ucne.proyectofinalap2_ronell.presentation.marca.MarcaScreen
+import com.edu.ucne.proyectofinalap2_ronell.presentation.perfil_usuario.PerfilUsuarioScreen
+import com.edu.ucne.proyectofinalap2_ronell.presentation.producto.InventarioListScreen
 import com.edu.ucne.proyectofinalap2_ronell.presentation.producto.ProductoListScreen
 import com.edu.ucne.proyectofinalap2_ronell.presentation.producto.ProductoScreen
 
 @Composable
 fun InventarioNavHost(
     navHostController: NavHostController,
+    authViewModel: AuthViewModel,
+//    context: Context
 ) {
+//    val authManager = remember(navHostController) {
+//        AuthManager(context, navHostController) // Usa el contexto recibido
+//    }
     NavHost(
         navController = navHostController,
-        startDestination = Screen.MarcaList,
+        startDestination = Screen.LoginScreen,
     ) {
         composable<Screen.ProductoList> {
             ProductoListScreen(onVerProducto = {
@@ -35,19 +55,21 @@ fun InventarioNavHost(
         composable<Screen.Producto> {
             val args = it.toRoute<Screen.Producto>()
             ProductoScreen(
-                irAProductoList = { navHostController.navigate(Screen.ProductoList) },
+                irAProductoList = { navHostController.navigate(Screen.InventarioList) },
                 productoId = args.productoId
             )
         }
 
 
         composable<Screen.CategoriaList> {
-            CategoriaListScreen(onVerCategoria = {
+            CategoriaListScreen(
+                onVerCategoria = {
                 navHostController.navigate(Screen.Categoria(it.categoriaId ?: 0))
             },
                 onAddCategoria = {
                     navHostController.navigate(Screen.Categoria(0))
-                }
+                },
+                irADashboard = { navHostController.navigate(Screen.Dashboard) }
             )
         }
 
@@ -68,7 +90,8 @@ fun InventarioNavHost(
             },
                 onAddMarca = {
                     navHostController.navigate(Screen.Marca(0))
-                }
+                },
+                irADashboard = { navHostController.navigate(Screen.Dashboard) }
             )
         }
 
@@ -81,8 +104,118 @@ fun InventarioNavHost(
             )
         }
 
+        composable<Screen.InventarioList> {
+            InventarioListScreen(onVerProducto = {
+                navHostController.navigate(Screen.Producto(it.productoId ?: 0))
+            },
+                onAddProducto = {
+                    navHostController.navigate(Screen.Producto(0))
+                },
+                irADashboard = { navHostController.navigate(Screen.Dashboard) }
+            )
+        }
+
+        composable<Screen.Dashboard> {
+            Dashboard(
+                irAInventario = {
+                    navHostController.navigate(Screen.InventarioList)
+                },
+
+                irACategoriaList = {
+                    navHostController.navigate(Screen.CategoriaList)
+                },
+                irAMarcasList = {
+                    navHostController.navigate(Screen.MarcaList)
+                },
+
+                irAInventarioStockBajo = {
+                    navHostController.navigate(Screen.InventarioStockBajoList)
+                },
+                irAInventarioFechaExp = {
+                    navHostController.navigate(Screen.InventarioFechaExpList)
+                },
+                irAPerfilScreen = {
+                    navHostController.navigate(Screen.PerfilScreen)
+                },
+                irALogin = {
+                    navHostController.navigate(Screen.LoginScreen)
+                },
+                authViewModel = authViewModel,
+
+
+
+            )
+        }
+
+        composable<Screen.InventarioStockBajoList> {
+            InventarioListScreenStockBajo(onVerProducto = {
+                navHostController.navigate(Screen.Producto(it.productoId ?: 0))
+            },
+                onAddProducto = {
+                    navHostController.navigate(Screen.Producto(0))
+                },
+                irADashboard = { navHostController.navigate(Screen.Dashboard) }
+            )
+        }
+
+        composable<Screen.InventarioFechaExpList> {
+            InventarioListScreenProximoVencer(onVerProducto = {
+                navHostController.navigate(Screen.Producto(it.productoId ?: 0))
+            },
+                onAddProducto = {
+                    navHostController.navigate(Screen.Producto(0))
+                },
+                irADashboard = { navHostController.navigate(Screen.Dashboard) }
+            )
+        }
+
+        composable<Screen.PerfilScreen> {
+            PerfilUsuarioScreen(
+                irADashboard = { navHostController.navigate(Screen.Dashboard) },
+                authViewModel = authViewModel,
+                irALogin = { navHostController.navigate(Screen.LoginScreen) }
+
+            )
+        }
+
+        composable<Screen.LoginScreen> {
+            LoginScreen(
+                irARegistro = { navHostController.navigate(Screen.RegistroScreen) },
+                authViewModel = authViewModel,
+                irADashboard = { navHostController.navigate(Screen.Dashboard) }
+
+            )
+        }
+
+        composable<Screen.RegistroScreen> {
+            SignUpScreen(
+                irALogin = { navHostController.navigate(Screen.LoginScreen) },
+                authViewModel = authViewModel,
+                irADashboard = { navHostController.navigate(Screen.Dashboard) }
+
+
+//                state = SignInState()
+//                ,onSignInClick = { _, _ ->
+//                    navHostController.navigate(Screen.Dashboard)
+//                },
+
+            )
+        }
+
+//        composable<Screen.LoginScreen> {
+//            authManager.HandleAuth()
+//        }
+
+//        composable<Screen.PerfilScreen> {
+//            PerfilUsuarioScreen(
+//                userData = authManager.authClient.getSignedInUser(),
+//                onSignOut = { authManager.signOut() }
+//            )
+//        }
+
 
     }
+
 }
 
 

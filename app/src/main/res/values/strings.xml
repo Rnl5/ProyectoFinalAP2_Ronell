@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ProyectoFinalAP2_Ronell</string>
+    <string name="channel_name">Productos Notificaciones</string>
+    <string name="channel_description">Notificaciones para fecha de expiracion y stock bajo</string>
+    <string name="web_client_id">934179094272-jsvvrj5k753cl0h6n9eg8escmoq22sst.apps.googleusercontent.com</string>
+
 </resources>

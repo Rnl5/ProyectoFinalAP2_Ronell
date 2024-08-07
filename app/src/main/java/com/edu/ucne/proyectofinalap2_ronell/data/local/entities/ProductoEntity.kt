@@ -11,9 +11,9 @@ data class ProductoEntity(
     val descripcionProducto: String,
     val fechaVencProducto: String,
     val stockProducto: Int,
-//    val categoriaId: Int,
-//    val marcaId: Int,
-//    val precioCompraProducto: Double,
-//    val precioVentaProducto: Double,
-//    val codigoBarrasProducto: String
+    val categoriaId: Int,
+    val marcaId: Int,
+    val precioCompraProducto: Double,
+    val precioVentaProducto: Double,
+    val codigoBarrasProducto: String
 )

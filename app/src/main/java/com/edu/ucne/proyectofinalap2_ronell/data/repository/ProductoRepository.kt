@@ -12,11 +12,10 @@ import javax.inject.Inject
 class ProductoRepositoryImpl @Inject constructor(
     private val productosAPI: ProductoApi,
     private val productoDao: ProductoDao,
-) {
 
+) {
     suspend fun saveProducto(producto: ProductoEntity) =
         productoDao.save(producto)
-
 
     fun getProductosLocal(): Flow<List<ProductoEntity>> =
         productoDao.getAll()
@@ -28,6 +27,13 @@ class ProductoRepositoryImpl @Inject constructor(
     suspend fun getProductoLocal(productoId: Int): ProductoEntity? =
         productoDao.find(productoId)
 
+
+    suspend fun getProductosLocalSync() : List<ProductoEntity> =
+        productoDao.getAllSync()
+
+
+    suspend fun getProductoByBarcode(barcode: String): ProductoEntity? =
+        productoDao.findByCodigoBarras(barcode)
 
     suspend fun getProducto(id: Int): ProductoDto? {
         return try {
