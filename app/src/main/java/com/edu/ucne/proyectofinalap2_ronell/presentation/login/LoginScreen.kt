@@ -119,7 +119,6 @@ fun LoginScreen(
                     unfocusedBorderColor = Color.White,
                     focusedLabelColor = Color.White,
                     unfocusedLabelColor = Color.White,
-//                    textColor = Color.White
                 ),
                 leadingIcon = {
                     Icon(
@@ -144,7 +143,6 @@ fun LoginScreen(
                     unfocusedBorderColor = Color.White,
                     focusedLabelColor = Color.White,
                     unfocusedLabelColor = Color.White,
-//                    textColor = Color.White
                 ),
                 leadingIcon = {
                     Icon(
@@ -172,7 +170,6 @@ fun LoginScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(50.dp),
-//                colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)
             ) {
                 Text(
                     text = "Iniciar sesión",
@@ -192,81 +189,3 @@ fun LoginScreen(
         }
     }
 }
-
-//@Composable
-//fun LoginScreen(
-//    irARegistro: () -> Unit,
-//    authViewModel: AuthViewModel,
-//    irADashboard: () -> Unit,
-//
-//) {
-//    var email by remember { mutableStateOf("") }
-//
-//    var password by remember { mutableStateOf("") }
-//
-//
-//    val authState = authViewModel.authState.collectAsState()
-//    val context = LocalContext.current
-//
-//    LaunchedEffect(authState.value) {
-//        when(authState.value){
-//            is AuthState.Autenticado -> irADashboard()
-//            is AuthState.Error -> Toast.makeText(context,
-//                (authState.value as AuthState.Error).message, Toast.LENGTH_SHORT).show()
-//            else -> Unit
-//        }
-//
-//    }
-//
-//
-//    Column(
-//        modifier = Modifier.fillMaxSize(),
-//        verticalArrangement = Arrangement.Center,
-//        horizontalAlignment = Alignment.CenterHorizontally
-//    ) {
-//        Text(text = "Login Page", fontSize = 32.sp)
-//
-//        Spacer(modifier = Modifier.height(16.dp))
-//
-//        OutlinedTextField(
-//            value = email, onValueChange = {
-//            email = it
-//        },
-//            label = {
-//                Text(text = "Email")
-//            }
-//        )
-//
-//        Spacer(modifier = Modifier.height(8.dp))
-//
-//        OutlinedTextField(
-//            value = password, onValueChange = {
-//                password = it
-//            },
-//            label = {
-//                Text(text = "Password")
-//            }
-//        )
-//        Spacer(modifier = Modifier.height(8.dp))
-//
-//        Button(onClick = {
-//            authViewModel.login(email,password)
-//
-//        },
-//            enabled = authState.value != AuthState.Loading
-//        ) {
-//            Text(text = "Login")
-//        }
-//
-//        Spacer(modifier = Modifier.height(8.dp))
-//
-//        TextButton(onClick = {
-//            irARegistro()
-//        }) {
-//            Text(text = "No tienes una cuenta. Registrate")
-//        }
-//
-//
-//    }
-//
-//}

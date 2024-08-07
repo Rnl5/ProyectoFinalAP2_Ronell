@@ -46,7 +46,6 @@ class AuthViewModel @Inject constructor(
             if (currentUser != null) {
                 val fetchedUser = usuarioRepository.getUserByEmail(currentUser.email ?: "")
                 Log.d("AuthViewModel", "Fetched user: $fetchedUser")
-//                _userData.value = usuarioRepository.getUserByEmail(currentUser.email ?: "")
                 _userData.value = fetchedUser
             }
         }
@@ -65,16 +64,6 @@ class AuthViewModel @Inject constructor(
         password: String,
     ) {
 
-
-//            .addOnCompleteListener { task ->
-//                if (task.isSuccessful) {
-//                    _authState.value = com.edu.ucne.proyectofinalap2_ronell.presentation.login.AuthState.Autenticado
-//                } else{
-//                    _authState.value = com.edu.ucne.proyectofinalap2_ronell.presentation.login.AuthState.Error(task.exception?.message ?: "Something went wrong")
-//                }
-//            }
-//
-//    }
         if (email.isEmpty() || password.isEmpty()) {
             _authState.value = AuthState.Error("El email o la contraseña no pueden estar vacios")
             return
@@ -128,8 +117,6 @@ class AuthViewModel @Inject constructor(
             _authState.value = AuthState.NoAutenticado
             _userData.value = null
         }
-//        auth.signOut()
-//        _authState.value = AuthState.NoAutenticado
     }
 
 
@@ -142,88 +129,3 @@ sealed class AuthState {
     object Loading : AuthState()
     data class Error(val message: String) : AuthState()
 }
-
-
-//class AuthViewModel @Inject constructor(
-//    private val usuarioRepository: UsuarioRepository
-//) : ViewModel() {
-//    private val auth : FirebaseAuth = FirebaseAuth.getInstance()
-//
-//    private val _authState = MutableLiveData<AuthState>()
-//    val authState :  LiveData<AuthState> = _authState
-//
-//    init {
-//        checkAuthState()
-//    }
-//
-//    fun checkAuthState() {
-//        if(auth.currentUser == null) {
-//            _authState.value = com.edu.ucne.proyectofinalap2_ronell.presentation.login.AuthState.NoAutenticado
-//        } else {
-//            _authState.value = com.edu.ucne.proyectofinalap2_ronell.presentation.login.AuthState.Autenticado
-//
-//        }
-//    }
-//
-//    fun login(
-//        email: String,
-//        password:String) {
-//        if(email.isEmpty() || password.isEmpty()) {
-//            _authState.value = com.edu.ucne.proyectofinalap2_ronell.presentation.login.AuthState.Error("El email o la contraseña no pueden estar vacios")
-//            return
-//        }
-//        _authState.value = com.edu.ucne.proyectofinalap2_ronell.presentation.login.AuthState.Loading
-//        auth.signInWithEmailAndPassword(email, password)
-//            .addOnCompleteListener { task ->
-//                if (task.isSuccessful) {
-//                    _authState.value = com.edu.ucne.proyectofinalap2_ronell.presentation.login.AuthState.Autenticado
-//                } else{
-//                    _authState.value = com.edu.ucne.proyectofinalap2_ronell.presentation.login.AuthState.Error(task.exception?.message ?: "Something went wrong")
-//                }
-//            }
-//
-//    }
-//
-//    fun signup(
-//        email: String,
-//        password:String
-//    ) {
-//        if(email.isEmpty() || password.isEmpty()) {
-//            _authState.value = com.edu.ucne.proyectofinalap2_ronell.presentation.login.AuthState.Error("El email o la contraseña no pueden estar vacios")
-//            return
-//        }
-//        _authState.value = com.edu.ucne.proyectofinalap2_ronell.presentation.login.AuthState.Loading
-//        auth.createUserWithEmailAndPassword(email, password)
-//            .addOnCompleteListener { task ->
-//                if (task.isSuccessful) {
-//                    val user = UsuarioEntity(
-//                        nombreUsuario = email.substringBefore('@'),
-//                        correoElectronico = email,
-//                        password = password
-//                    )
-//                    viewModelScope.launch {
-//                        usuarioRepository.saveUsuario(user)
-//                    }
-//                    _authState.value = com.edu.ucne.proyectofinalap2_ronell.presentation.login.AuthState.Autenticado
-//                } else{
-//                    _authState.value = com.edu.ucne.proyectofinalap2_ronell.presentation.login.AuthState.Error(task.exception?.message ?: "Something went wrong")
-//                }
-//            }
-//
-//    }
-//
-//    fun signout(){
-//        auth.signOut()
-//        _authState.value = com.edu.ucne.proyectofinalap2_ronell.presentation.login.AuthState.NoAutenticado
-//    }
-//
-//
-//}
-//
-//
-//sealed class AuthState{
-//    object Autenticado : AuthState()
-//    object NoAutenticado : AuthState()
-//    object Loading : AuthState()
-//    data class Error(val message: String) :AuthState()
-//}

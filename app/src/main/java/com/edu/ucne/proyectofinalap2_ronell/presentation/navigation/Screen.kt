@@ -28,9 +28,6 @@ sealed class Screen() {
     object InventarioList : Screen()
 
     @Serializable
-    object TodoList : Screen()
-
-    @Serializable
     object InventarioStockBajoList : Screen()
 
     @Serializable

@@ -76,7 +76,6 @@ fun ProductoScreen(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-//    val showBarcodeScanner by viewModel.showBarcodeScanner.collectAsStateWithLifecycle()
 
     val categorias by viewModel.categoria.collectAsStateWithLifecycle()
 
@@ -88,14 +87,6 @@ fun ProductoScreen(
         viewModel.getProductosLocal()
     }
 
-//    if(showBarcodeScanner) {
-//        EscanerCodigoBarras(onBarcodeScanned = { barcode ->
-//            viewModel.onBarcodeScanned(barcode)
-//            viewModel.onBarcodeScannerToggle()
-//        },
-//            onDismiss = { viewModel.onBarcodeScannerToggle() }
-//        )
-//    } else {
     ProductoBody(
         uiState = uiState,
         onSaveProducto = { viewModel.postProducto() },
@@ -115,7 +106,6 @@ fun ProductoScreen(
         onPrecioVentaChanged = viewModel::onPrecioVentaChanged,
     )
 
-//    }
 
 
 }
@@ -141,9 +131,6 @@ private fun ProductoBody(
     onPrecioCompraChanged: (Double) -> Unit,
     onPrecioVentaChanged: (Double) -> Unit,
 ) {
-//    var categoriaSeleccionada by remember { mutableStateOf<CategoriaEntity?>(null) }
-//
-//    var marcaSeleccionada by remember { mutableStateOf<MarcaEntity?>(null) }
 
 
     var mostrarToast by remember { mutableStateOf(false) }
@@ -172,13 +159,6 @@ private fun ProductoBody(
                         )
                     }
                 },
-//                actions = {
-//                    EscanerCodigoBarras(onBarcodeScanned = onBarcodeScanned)
-////                    IconButton(onClick =  onBarcodeScannerToggle) {
-////                        Icon(imageVector = Icons.Default.Build, contentDescription = "Escanear codigo de barras")
-////
-////                    }
-//                }
             )
         }
     )
@@ -223,7 +203,6 @@ private fun ProductoBody(
                             onNombreChanged = onNombreChanged,
                             onDescripcionChanged = onDescripcionChanged,
                             onFechaVencProductoChanged = onFechaVencProductoChanged,
-//                            mostrarDatePicker = mostrarDatePicker,
                             onMostrarDatePickerChanged = { mostrarDatePicker = it },
                             state = state,
                             onPrecioChanged = onPrecioChanged
@@ -257,7 +236,6 @@ private fun ProductoBody(
                             onClick = onNewProducto,
                             colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)
                         ) {
-//                            Icon(imageVector = Icons.Default.Add, contentDescription = "Nuevo")
                             Spacer(modifier = Modifier.width(4.dp))
                             Text(text = "Nuevo")
                         }
@@ -267,10 +245,6 @@ private fun ProductoBody(
                             mostrarToast = true
                         }
                         ) {
-//                            Icon(
-//                                imageVector = Icons.Default.CheckCircle,
-//                                contentDescription = "Guardar"
-//                            )
                             Spacer(modifier = Modifier.width(4.dp))
                             Text(text = "Guardar")
                         }
@@ -284,7 +258,6 @@ private fun ProductoBody(
                             },
                             colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error)
                         ) {
-//                            Icon(Icons.Default.Delete, contentDescription = "Borrar")
                             Spacer(Modifier.width(4.dp))
                             Text("Borrar")
                         }
@@ -341,7 +314,6 @@ fun InformacionBasicaTab(
     onNombreChanged: (String) -> Unit,
     onDescripcionChanged: (String) -> Unit,
     onFechaVencProductoChanged: (String) -> Unit,
-//    mostrarDatePicker: Boolean,
     onMostrarDatePickerChanged: (Boolean) -> Unit,
     state: DatePickerState,
     onPrecioChanged: (Int) -> Unit,
@@ -404,23 +376,6 @@ fun InformacionBasicaTab(
         uiState.fechaVencProductoError?.let { Text(it, color = MaterialTheme.colorScheme.error) }
     }
 
-//    OutlinedTextField(
-//        value = uiState.fechaVencProducto.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
-//        onValueChange = onFechaVencProductoChanged,
-//        readOnly = true,
-//        label = { Text("Fecha de vencimiento") },
-//        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-//        trailingIcon = {
-//            IconButton(onClick = { onMostrarDatePickerChanged(true) }) {
-//                Icon(
-//                    Icons.Default.DateRange, "Seleccionar fecha"
-//                )
-//            }
-//        },
-//        modifier = Modifier
-//            .fillMaxWidth()
-//            .clickable { onMostrarDatePickerChanged(true) }
-//    )
     uiState.fechaVencProductoError?.let { Text(it, color = MaterialTheme.colorScheme.error) }
 
     Spacer(modifier = Modifier.height(8.dp))
@@ -479,8 +434,6 @@ fun DetallesTab(
     uiState: ProductoUiState,
     categorias: List<CategoriaEntity>,
     marcas: List<MarcaEntity>,
-//    categoriaSeleccionada: CategoriaEntity?,
-//    marcaSeleccionada: MarcaEntity?,
     onCategoriaChanged: (Int) -> Unit,
     onMarcaChanged: (Int) -> Unit,
     onBarcodeScanned: (String) -> Unit,
@@ -566,406 +519,3 @@ fun PreciosTab(
     uiState.precioVentaError?.let { Text(it, color = MaterialTheme.colorScheme.error) }
 }
 
-
-//@Composable
-//fun ProductoScreen(
-//    viewModel: ProductoViewModel = hiltViewModel(),
-//    irAProductoList: () -> Unit,
-//    productoId: Int?,
-//) {
-//    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-//
-////    val showBarcodeScanner by viewModel.showBarcodeScanner.collectAsStateWithLifecycle()
-//
-//    val categorias by viewModel.categoria.collectAsStateWithLifecycle()
-//
-//    val marcas by viewModel.marca.collectAsStateWithLifecycle()
-//
-//
-//    LaunchedEffect(key1 = true) {
-//        viewModel.onSetProducto(productoId ?: 0)
-//        viewModel.getProductosLocal()
-//    }
-//
-////    if(showBarcodeScanner) {
-////        EscanerCodigoBarras(onBarcodeScanned = { barcode ->
-////            viewModel.onBarcodeScanned(barcode)
-////            viewModel.onBarcodeScannerToggle()
-////        },
-////            onDismiss = { viewModel.onBarcodeScannerToggle() }
-////        )
-////    } else {
-//    ProductoBody(
-//        uiState = uiState,
-//        onSaveProducto = { viewModel.postProducto() },
-//        onDeleteProducto = { viewModel.deleteProducto() },
-//        irAProductoList = { irAProductoList() },
-//        onNombreChanged = viewModel::onNombreChanged,
-//        onDescripcionChanged = viewModel::onDescripcionChanged,
-//        onFechaVencProductoChanged = viewModel::onFechaVencProductoChanged,
-//        onPrecioChanged = viewModel::onStockChanged,
-//        onCategoriaChanged = viewModel::onCategoriaChanged ,
-//        onMarcaChanged = viewModel::onMarcaChanged ,
-//        onNewProducto = viewModel::newProducto,
-//        categorias = categorias,
-//        marcas = marcas,
-//        onBarcodeScanned = viewModel::onBarcodeScanned,
-//        onPrecioCompraChanged = viewModel::onPrecioCompraChanged,
-//        onPrecioVentaChanged = viewModel::onPrecioVentaChanged,
-//    )
-//
-////    }
-//
-//
-//}
-//
-//
-//@OptIn(ExperimentalMaterial3Api::class)
-//@Composable
-//private fun ProductoBody(
-//    uiState: ProductoUiState,
-//    onSaveProducto: () -> Boolean,
-//    onDeleteProducto: () -> Unit,
-//    irAProductoList: () -> Unit,
-//    onNombreChanged: (String) -> Unit,
-//    onDescripcionChanged: (String) -> Unit,
-//    onFechaVencProductoChanged: (String) -> Unit,
-//    onPrecioChanged: (Int) -> Unit,
-//    onNewProducto: () -> Unit,
-//    categorias: List<CategoriaEntity>,
-//    marcas: List<MarcaEntity>,
-//    onCategoriaChanged: (Int) -> Unit,
-//    onMarcaChanged: (Int) -> Unit,
-//    onBarcodeScanned: (String) -> Unit,
-//    onPrecioCompraChanged: (Double) -> Unit,
-//    onPrecioVentaChanged: (Double) -> Unit,
-//) {
-//    var categoriaSeleccionada by remember { mutableStateOf<CategoriaEntity?>(null) }
-//
-//    var marcaSeleccionada by remember { mutableStateOf<MarcaEntity?>(null) }
-//
-//
-//    var mostrarDatePicker by remember { mutableStateOf(false) }
-//    
-////    var tabIndex by remember { mutableStateOf(0) }
-//    val unDia = 86400000
-//
-//    val state = rememberDatePickerState(selectableDates = object : SelectableDates {
-//        override fun isSelectableDate(utcTimeMillis: Long): Boolean {
-//            return utcTimeMillis >= System.currentTimeMillis() - unDia
-//        }
-//    })
-//
-//    Scaffold(
-//        modifier = Modifier.fillMaxSize(),
-//        topBar = {
-//            TopAppBar(
-//                title = { Text(text = "Registro de productos") },
-//                navigationIcon = {
-//                    IconButton(onClick = irAProductoList) {
-//                        Icon(
-//                            imageVector = Icons.Default.ArrowBack,
-//                            contentDescription = "Atras"
-//                        )
-//                    }
-//                },
-//                actions = {
-//                    EscanerCodigoBarras(onBarcodeScanned = onBarcodeScanned)
-////                    IconButton(onClick =  onBarcodeScannerToggle) {
-////                        Icon(imageVector = Icons.Default.Build, contentDescription = "Escanear codigo de barras")
-////
-////                    }
-//                }
-//            )
-//        }
-//    )
-//    { innerPadding ->
-//        Column(
-//            modifier = Modifier
-//                .fillMaxSize()
-//                .padding(innerPadding)
-//                .padding(8.dp)
-//        ) {
-//            ElevatedCard(
-//                modifier = Modifier.fillMaxWidth()
-//            ) {
-//                Column(
-//                    modifier = Modifier
-//                        .fillMaxWidth()
-//                        .padding(8.dp)
-//                ) {
-//                    OutlinedTextField(
-//                        value = uiState.nombre ?: "",
-//                        onValueChange = onNombreChanged,
-//                        modifier = Modifier.fillMaxWidth(),
-//                        isError = uiState.nombreError != null,
-//                        label = { Text(text = "Nombre") }
-//                    )
-//                    uiState.nombreError?.let { Text(it, color = MaterialTheme.colorScheme.error) }
-//
-//                    OutlinedTextField(
-//                        value = uiState.descripcion ?: "",
-//                        onValueChange = onDescripcionChanged,
-//                        modifier = Modifier.fillMaxWidth(),
-//                        isError = uiState.descripcionError != null,
-//                        label = { Text(text = "Descripción") }
-//                    )
-//                    if (uiState.descripcionError != null) {
-//                        Text(
-//                            text = uiState.descripcionError ?: "",
-//                            color = MaterialTheme.colorScheme.error
-//                        )
-//                    }
-//                    Spacer(modifier = Modifier.padding(2.dp))
-//
-//                    ExposedDropdownMenuBox(
-//                        expanded = false,
-//                        onExpandedChange = { mostrarDatePicker = !mostrarDatePicker }
-//                    )
-//                    {
-//                        OutlinedTextField(
-//                            label = { Text(text = "Fecha de vencimiento") },
-//                            value = uiState.fechaVencProducto.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
-//                            readOnly = true,
-//                            onValueChange = { onFechaVencProductoChanged },
-//                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-//                            trailingIcon = {
-//                                IconButton(
-//                                    onClick = {
-//                                        mostrarDatePicker = true
-//                                    }
-//                                ) {
-//                                    Icon(
-//                                        imageVector = Icons.Default.DateRange,
-//                                        contentDescription = "Date Picker"
-//                                    )
-//                                }
-//                            },
-//                            modifier = Modifier
-//                                .menuAnchor()
-//                                .fillMaxWidth()
-//                                .clickable(enabled = true) {
-//                                    mostrarDatePicker = true
-//                                }
-//                        )
-//                        uiState.fechaVencProductoError?.let {
-//                            Text(
-//                                it,
-//                                color = MaterialTheme.colorScheme.error
-//                            )
-//                        }
-//                    }
-//
-//                    Spacer(modifier = Modifier.padding(8.dp))
-//
-//
-//                    Combobox(
-//                        label = "Categorias",
-//                        items = categorias,
-//                        selectedItem = categoriaSeleccionada,
-//                        selectedItemString = {
-//                            it?.nombreCategoria ?: ""
-//                        },
-//                        onItemSelected = {
-//                            onCategoriaChanged(it?.categoriaId ?: 0)
-//                            categoriaSeleccionada = it
-//                            uiState.categoriaId = it?.categoriaId
-//                        },
-//                        itemTemplate = { Text(text = it.nombreCategoria ?: "") },
-//                        isErrored = false
-//                    )
-//
-//                    Spacer(modifier = Modifier.padding(8.dp))
-//
-//
-//                    Combobox(
-//                        label = "Marcas",
-//                        items = marcas,
-//                        selectedItem = marcaSeleccionada,
-//                        selectedItemString = {
-//                            it?.nombreMarca ?: ""
-////                            it?.let {
-////                                "${it.nombreMarca}"
-////                            } ?: ""
-//                        },
-//                        onItemSelected = {
-//                            onMarcaChanged(it?.marcaId ?: 0)
-//                            marcaSeleccionada = it
-//                            uiState.marcaId = it?.marcaId
-//                        },
-//                        itemTemplate = { Text(text = it.nombreMarca ?: "") },
-//                        isErrored = false
-//                    )
-//
-//
-//                    Spacer(modifier = Modifier.padding(8.dp))
-//
-//                    OutlinedTextField(
-//                        value = uiState.stock.toString(),
-//                        onValueChange = { valor ->
-//                            valor.trim().toIntOrNull()?.let { onPrecioChanged(it) }
-//                        },
-//                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-//                        modifier = Modifier.fillMaxWidth(),
-//                        isError = uiState.stockError != null,
-//                        label = { Text(text = "Precio") },
-//                    )
-//                    if (uiState.stockError != null) {
-//                        Text(
-//                            text = uiState.stockError ?: "",
-//                            color = MaterialTheme.colorScheme.error
-//                        )
-//                    }
-//
-//                    Spacer(modifier = Modifier.padding(2.dp))
-//
-//                    OutlinedTextField(
-//                        value = uiState.codigoBarras ?: "",
-//                        onValueChange = onBarcodeScanned,
-//                        modifier = Modifier.fillMaxWidth(),
-//                        isError = uiState.codigoBarrasError != null,
-//                        label = { Text(text = "Codigo de barras") }
-//                    )
-//
-//                    Spacer(modifier = Modifier.padding(2.dp))
-//
-//
-//                    OutlinedTextField(
-//                        value = uiState.precioCompra.toString(),
-//                        onValueChange = { valor ->
-//                            valor.trim().toDoubleOrNull()?.let { onPrecioCompraChanged(it) }
-//                        },
-//                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-//                        modifier = Modifier.fillMaxWidth(),
-//                        isError = uiState.precioCompraError != null,
-//                        label = { Text(text = "Precio de Compra") },
-//                    )
-//
-//                    Spacer(modifier = Modifier.padding(2.dp))
-//
-//                    OutlinedTextField(
-//                        value = uiState.precioVenta.toString(),
-//                        onValueChange = { valor ->
-//                            valor.trim().toDoubleOrNull()?.let { onPrecioVentaChanged(it) }
-//                        },
-//                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-//                        modifier = Modifier.fillMaxWidth(),
-//                        isError = uiState.precioVentaError != null,
-//                        label = { Text(text = "Precio de Venta") },
-//                    )
-//                    if (uiState.precioVentaError != null) {
-//                        Text(
-//                            text = uiState.precioVentaError ?: "",
-//                            color = MaterialTheme.colorScheme.error
-//                        )
-//                    }
-//
-//                    Row(
-//                        modifier = Modifier.fillMaxWidth(),
-//                        horizontalArrangement = Arrangement.SpaceEvenly
-//                    ) {
-//                        OutlinedButton(onClick = onNewProducto) {
-//                            Icon(
-//                                imageVector = Icons.Default.Add,
-//                                contentDescription = "Nuevo"
-//                            )
-//                            Text(text = "Nuevo")
-//                        }
-//
-//                        OutlinedButton(
-//                            onClick = {
-//                                val guardado = onSaveProducto()
-//                                if (guardado) {
-//                                    irAProductoList()
-//                                }
-//                            }
-//                        ) {
-//                            Icon(
-//                                imageVector = Icons.Default.Edit,
-//                                contentDescription = "Guardar"
-//                            )
-//                            Text(text = "Guardar")
-//                        }
-//
-//                        OutlinedButton(onClick = {
-//                            if (uiState.productoId != null && uiState.productoId != 0) {
-//                                onDeleteProducto()
-//                                irAProductoList()
-//                            }
-//                        }
-//                        ) {
-//                            Icon(
-//                                imageVector = Icons.Default.Delete,
-//                                contentDescription = "Borrar"
-//                            )
-//                            Text(text = "Borrar")
-//                        }
-//                    }
-//
-//                }
-//            }
-//
-//        }
-//
-//    }
-//
-//
-//    if (mostrarDatePicker) {
-//        DatePickerDialog(
-//            onDismissRequest = { mostrarDatePicker = false },
-//            confirmButton = {
-//                Button(
-//                    onClick = {
-//                        onFechaVencProductoChanged(
-//                            state.selectedDateMillis?.let {
-//                                Instant.ofEpochMilli(it).atZone(
-//                                    ZoneId.of("UTC")
-//                                ).format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-//                            }.toString()
-//                        )
-//                        mostrarDatePicker = false
-//                    },
-//                    colors = ButtonDefaults.buttonColors(
-//                        containerColor = Color.Blue,
-//                        contentColor = Color.White
-//                    )
-//                ) {
-//                    Text(text = "Aceptar")
-//                }
-//            },
-//            dismissButton = {
-//                OutlinedButton(onClick = { mostrarDatePicker = false }) {
-//                    Text(text = "Cancelar")
-//                }
-//            },
-//        )
-//        {
-//            DatePicker(state)
-//        }
-//    }
-//}
-//
-//@Preview
-//@Composable
-//private fun ProductoPreview() {
-//    ProyectoFinalAP2_RonellTheme {
-//        ProductoBody(
-//            uiState = ProductoUiState(),
-//            onSaveProducto = { true },
-//            onDeleteProducto = {},
-//            irAProductoList = {},
-//            onNombreChanged = {},
-//            onDescripcionChanged = {},
-//            onFechaVencProductoChanged = {},
-//            onPrecioChanged = {},
-//            onNewProducto = {},
-//            categorias = emptyList(),
-//            marcas = emptyList(),
-//            onCategoriaChanged = {},
-//            onMarcaChanged = {},
-//            onBarcodeScanned = {},
-//            onPrecioCompraChanged = {},
-//            onPrecioVentaChanged = {},
-//        )
-//    }
-//}

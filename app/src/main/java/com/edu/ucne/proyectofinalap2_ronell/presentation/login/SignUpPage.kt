@@ -119,7 +119,6 @@ fun SignUpScreen(
                     unfocusedBorderColor = Color.White,
                     focusedLabelColor = Color.White,
                     unfocusedLabelColor = Color.White,
-//                    textColor = Color.White
                 ),
                 leadingIcon = {
                     Icon(
@@ -143,7 +142,6 @@ fun SignUpScreen(
                     unfocusedBorderColor = Color.White,
                     focusedLabelColor = Color.White,
                     unfocusedLabelColor = Color.White,
-//                    textColor = Color.White
                 ),
                 leadingIcon = {
                     Icon(
@@ -168,7 +166,6 @@ fun SignUpScreen(
                     unfocusedBorderColor = Color.White,
                     focusedLabelColor = Color.White,
                     unfocusedLabelColor = Color.White,
-//                    textColor = Color.White
                 ),
                 leadingIcon = {
                     Icon(
@@ -197,7 +194,6 @@ fun SignUpScreen(
                     .fillMaxWidth()
                     .height(50.dp),
                 colors = ButtonDefaults.buttonColors(
-//                    backgroundColor = Color.White
                 )
             ) {
                 Text(
@@ -218,87 +214,3 @@ fun SignUpScreen(
         }
     }
 }
-
-//
-//@Composable
-//fun SignUpScreen(
-//    irALogin: () -> Unit,
-//    authViewModel: AuthViewModel,
-//    irADashboard: () -> Unit
-//){
-//    var email by remember { mutableStateOf("") }
-//    var password by remember { mutableStateOf("") }
-//    var nombreUsuario by remember { mutableStateOf("") }
-//
-//    val authState = authViewModel.authState.collectAsState()
-//
-//    val context = LocalContext.current
-//
-//    LaunchedEffect(authState.value) {
-//        when(authState.value) {
-//            is AuthState.Autenticado -> irADashboard()
-//            is AuthState.Error -> Toast.makeText(context,
-//                (authState.value as AuthState.Error).message, Toast.LENGTH_SHORT).show()
-//
-//            else -> Unit
-//        }
-//
-//    }
-//
-//    Column(
-//        modifier = Modifier.fillMaxSize(),
-//        verticalArrangement = Arrangement.Center,
-//        horizontalAlignment = Alignment.CenterHorizontally
-//    ) {
-//        Text(text = "Registro Page", fontSize = 32.sp)
-//
-//        Spacer(modifier = Modifier.height(16.dp))
-//        OutlinedTextField(
-//            value = nombreUsuario, onValueChange = {
-//                nombreUsuario = it
-//            },
-//            label = {
-//                Text(text = "Nombre de usuario")
-//            }
-//        )
-//
-//        OutlinedTextField(
-//            value = email, onValueChange = {
-//                email = it
-//            },
-//            label = {
-//                Text(text = "Email")
-//            }
-//        )
-//
-//        Spacer(modifier = Modifier.height(8.dp))
-//
-//        OutlinedTextField(
-//            value = password, onValueChange = {
-//                password = it
-//            },
-//            label = {
-//                Text(text = "Password")
-//            }
-//        )
-//        Spacer(modifier = Modifier.height(8.dp))
-//
-//        Button(onClick = {
-//            authViewModel.signup(email,password, nombreUsuario)
-//        },
-//            enabled = authState.value != AuthState.Loading
-//        ) {
-//            Text(text = "Crear cuenta")
-//
-//        }
-//
-//        Spacer(modifier = Modifier.height(8.dp))
-//
-//        TextButton(onClick = {
-//            irALogin()
-//        }) {
-//            Text(text = "Ya tengo una cuenta. Inicia sesion")
-//        }
-//    }
-//
-//}

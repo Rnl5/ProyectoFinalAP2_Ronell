@@ -1,26 +1,20 @@
 package com.edu.ucne.proyectofinalap2_ronell.presentation.navigation
 
 
-import android.content.Context
+//import com.edu.ucne.proyectofinalap2_ronell.presentation.login.AuthManager
+//import com.edu.ucne.proyectofinalap2_ronell.presentation.login.ProfileScreen
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.LocalContext
-
 import androidx.navigation.NavHostController
-import androidx.navigation.Navigation
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
 import com.edu.ucne.proyectofinalap2_ronell.presentation.Home.Dashboard
 import com.edu.ucne.proyectofinalap2_ronell.presentation.Inventario.InventarioListScreenProximoVencer
 import com.edu.ucne.proyectofinalap2_ronell.presentation.Inventario.InventarioListScreenStockBajo
-import com.edu.ucne.proyectofinalap2_ronell.presentation.Inventario.InventarioListStockBajoBody
 import com.edu.ucne.proyectofinalap2_ronell.presentation.categoria.CategoriaListScreen
 import com.edu.ucne.proyectofinalap2_ronell.presentation.categoria.CategoriaScreen
 import com.edu.ucne.proyectofinalap2_ronell.presentation.login.AuthViewModel
-//import com.edu.ucne.proyectofinalap2_ronell.presentation.login.AuthManager
 import com.edu.ucne.proyectofinalap2_ronell.presentation.login.LoginScreen
-//import com.edu.ucne.proyectofinalap2_ronell.presentation.login.ProfileScreen
 import com.edu.ucne.proyectofinalap2_ronell.presentation.login.SignUpScreen
 import com.edu.ucne.proyectofinalap2_ronell.presentation.marca.MarcaListScreen
 import com.edu.ucne.proyectofinalap2_ronell.presentation.marca.MarcaScreen
@@ -33,11 +27,7 @@ import com.edu.ucne.proyectofinalap2_ronell.presentation.producto.ProductoScreen
 fun InventarioNavHost(
     navHostController: NavHostController,
     authViewModel: AuthViewModel,
-//    context: Context
 ) {
-//    val authManager = remember(navHostController) {
-//        AuthManager(context, navHostController) // Usa el contexto recibido
-//    }
     NavHost(
         navController = navHostController,
         startDestination = Screen.LoginScreen,
@@ -64,8 +54,8 @@ fun InventarioNavHost(
         composable<Screen.CategoriaList> {
             CategoriaListScreen(
                 onVerCategoria = {
-                navHostController.navigate(Screen.Categoria(it.categoriaId ?: 0))
-            },
+                    navHostController.navigate(Screen.Categoria(it.categoriaId ?: 0))
+                },
                 onAddCategoria = {
                     navHostController.navigate(Screen.Categoria(0))
                 },
@@ -143,8 +133,7 @@ fun InventarioNavHost(
                 authViewModel = authViewModel,
 
 
-
-            )
+                )
         }
 
         composable<Screen.InventarioStockBajoList> {
@@ -193,25 +182,8 @@ fun InventarioNavHost(
                 authViewModel = authViewModel,
                 irADashboard = { navHostController.navigate(Screen.Dashboard) }
 
-
-//                state = SignInState()
-//                ,onSignInClick = { _, _ ->
-//                    navHostController.navigate(Screen.Dashboard)
-//                },
-
             )
         }
-
-//        composable<Screen.LoginScreen> {
-//            authManager.HandleAuth()
-//        }
-
-//        composable<Screen.PerfilScreen> {
-//            PerfilUsuarioScreen(
-//                userData = authManager.authClient.getSignedInUser(),
-//                onSignOut = { authManager.signOut() }
-//            )
-//        }
 
 
     }

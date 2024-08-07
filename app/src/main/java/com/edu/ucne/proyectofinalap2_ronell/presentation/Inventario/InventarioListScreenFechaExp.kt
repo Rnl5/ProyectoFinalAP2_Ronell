@@ -92,7 +92,6 @@ fun InventarioListBodyProximoVencer(
     var selectedCategorias by remember { mutableStateOf<Set<CategoriaEntity?>>(emptySet()) }
     var selectedMarcas by remember { mutableStateOf<Set<MarcaEntity?>>(emptySet()) }
 
-    // ... (mantén el código existente hasta la parte del filtrado)
 
     val filteredProductos by remember(
         searchQuery,
@@ -212,12 +211,6 @@ fun InventarioListBodyProximoVencer(
 
             Divider()
 
-
-//            if (uistate.isLoading) {
-//                Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-//                    CircularProgressIndicator()
-//                }
-//            } else {
             LazyColumn {
                 items(filteredProductos) { producto ->
                     val categoria =
@@ -232,7 +225,6 @@ fun InventarioListBodyProximoVencer(
                     Divider()
                 }
             }
-//            }
         }
     }
 }
@@ -245,11 +237,9 @@ fun ProductoItemCompactoFechaExp(
     marca: MarcaEntity?,
 ) {
     val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
-//    val fechaVencimiento = LocalDate.parse(producto.fechaVencProducto, formatter)
     val fechaVencimiento = if (producto.fechaVencProducto.isNotEmpty()) {
         LocalDate.parse(producto.fechaVencProducto, formatter)
     } else {
-        // Manejar el caso de una cadena vacía, por ejemplo, asignar una fecha por defecto o null
         LocalDate.MAX
     }
     val hoy = LocalDate.now()
@@ -330,8 +320,3 @@ fun BarraBusquedaFechaExp(
         )
     )
 }
-
-
-
-
-// ... (mantén el resto del código igual)
